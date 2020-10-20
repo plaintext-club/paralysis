@@ -24,8 +24,7 @@ const useStyles = makeStyles(function (theme) {
 		},
 		fixedHeight: {
 			height: 240
-		},
-		appBarSpacer: theme.mixins.toolbar
+		}
 	};
 });
 
@@ -35,7 +34,6 @@ function Dashboard() {
 
 	return (
 		<>
-			<div className={classes.appBarSpacer} />
 			<Container maxWidth="lg" className={classes.container}>
 				<Grid container justify="center" spacing={5}>
 					<Grid item xs={12} md={6} lg={3}>

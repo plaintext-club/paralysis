@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Header from "./Header";
 import NavDrawer from "./NavDrawer";
 import Dashboard from "./Dashboard";
+import ApiSetUrl from "./ApiSetUrl";
 
 const useStyles = makeStyles(function (theme) {
 	return {
@@ -16,7 +17,8 @@ const useStyles = makeStyles(function (theme) {
 			flexGrow: 1,
 			height: "100vh",
 			overflow: "auto"
-		}
+		},
+		appBarSpacer: theme.mixins.toolbar
 	};
 });
 
@@ -38,6 +40,8 @@ function App() {
 			<Header menuClick={navOpen} />
 			<NavDrawer open={nav} handleClose={navClose} />
 			<main className={classes.content}>
+				<div className={classes.appBarSpacer} />
+				<ApiSetUrl />
 				<Dashboard />
 			</main>
 		</div>
