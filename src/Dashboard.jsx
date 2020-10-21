@@ -6,7 +6,8 @@ import {
 	Grid,
 	Paper,
 	Box,
-	Container
+	Container,
+	Button
 } from "@material-ui/core";
 
 const useStyles = makeStyles(function (theme) {
@@ -36,20 +37,27 @@ function Dashboard() {
 		<>
 			<div className={classes.appBarSpacer} />
 			<Container maxWidth="lg" className={classes.container}>
-				<Grid container spacing={3}>
-					{/* Chart */}
-					<Grid item xs={12} md={8} lg={9}>
+				<Grid container justify="center" spacing={5}>
+					<Grid item xs={12} md={6} lg={3}>
 						<Paper className={fixedHeightPaper}>
-							<p>This is a chart</p>
+							<p>Temperatura: 25.3 C</p>
 						</Paper>
 					</Grid>
-					{/* Recent Deposits */}
-					<Grid item xs={12} md={4} lg={3}>
+					<Grid item xs={12} md={6} lg={3}>
 						<Paper className={fixedHeightPaper}>
-							<p>This is a table</p>
+							<p>Input status: 1</p>
 						</Paper>
 					</Grid>
-					{/* Recent Orders */}
+					<Grid item xs={12} md={6} lg={3}>
+						<Paper className={fixedHeightPaper}>
+							<Button variant="contained" color="primary">
+								ON
+							</Button>
+							<Button variant="contained" color="secondary">
+								OFF
+							</Button>
+						</Paper>
+					</Grid>
 					<Grid item xs={12}>
 						<Paper className={classes.paper}>
 							<p>Orders here</p>
