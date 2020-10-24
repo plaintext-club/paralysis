@@ -1,6 +1,4 @@
 import React from "react";
-import { useState } from "react";
-import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import navItems from './listItems';
 
@@ -18,7 +16,6 @@ const useStyles = makeStyles(function (theme) {
 
 function NavDrawer({ open, handleClose }) {
 	const classes = useStyles();
-	const [state, setState] = useState(false);
 
 	return (
 		<>
