@@ -22,9 +22,6 @@ function Dashboard() {
 					<CardInput />
 					<CardOutput />
 				</Grid>
-				<Box pt={4}>
-					<p>This is the copyright</p>
-				</Box>
 			</Container>
 		</>
 	);
