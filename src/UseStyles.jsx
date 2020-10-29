@@ -8,12 +8,32 @@ const useStyles = makeStyles(function (theme) {
 		},
 		paper: {
 			padding: theme.spacing(2),
-			display: 'flex',
-			overflow: 'auto',
-			flexDirection: 'column'
+			display: "flex",
+			overflow: "auto",
+			flexDirection: "column"
 		},
 		fixedHeight: {
 			height: 240
+		},
+		formControl: {
+			margin: theme.spacing(1),
+			minWidth: 120,
+		},
+		selectEmpty: {
+			marginTop: theme.spacing(2),
+		},
+		displayPaper: {
+			margin: "20px",
+			padding: "5px",
+			textAlign: "center"
+		},
+		buttonFlex: {
+			display: "flex",
+			alignItems: "center",
+			justifyContent: "center"
+		},
+		cardBtn: {
+			margin: "0 5px"
 		}
 	};
 });
