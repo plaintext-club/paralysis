@@ -2,8 +2,7 @@ import React from "react";
 
 import {
 	Grid,
-	Box,
-	Container,
+	Container
 } from "@material-ui/core";
 
 import useStyles from "./UseStyles";

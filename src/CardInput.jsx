@@ -12,6 +12,7 @@ import {
 } from "@material-ui/core";
 
 import useStyles from "./UseStyles";
+import GpioSelect from "./GpioSelect";
 
 function CardInput() {
 	const classes = useStyles();
@@ -28,14 +29,7 @@ function CardInput() {
 				<Paper className={fixedHeightPaper}>
 					<FormControl className={classes.formControl}>
 						<InputLabel>Input pin</InputLabel>
-						<Select
-							value={pin}
-							onChange={handleChange}
-						>
-							<MenuItem value={2}>2</MenuItem>
-							<MenuItem value={3}>3</MenuItem>
-							<MenuItem value={4}>4</MenuItem>
-						</Select>
+						<GpioSelect changeHandler={handleChange} />
 					</FormControl>
 					<Paper variant="outlined" className={classes.displayPaper}>
 						Status: 0

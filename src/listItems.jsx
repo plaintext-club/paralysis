@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 
 import {
 	ListItem,
 	ListItemIcon,
 	ListItemText,
 	Divider
-} from '@material-ui/core';
+} from "@material-ui/core";
 
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import SettingsIcon from '@material-ui/icons/Settings';
+import DashboardIcon from "@material-ui/icons/Dashboard";
+import SettingsIcon from "@material-ui/icons/Settings";
 
 const navItems = (
 	<>
