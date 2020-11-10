@@ -6,41 +6,53 @@ import {
 	Paper,
 	FormControl,
 	InputLabel,
-	Select,
-	MenuItem,
 	Button
 } from "@material-ui/core";
 
+import GpioSelect from "./GpioSelect";
 import useStyles from "./UseStyles";
+import useFetch from "./hooks/useFetch";
 
 function CardTemperature() {
 	const classes = useStyles();
 	const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-	const [pin, setPin] = React.useState("");
+	const [gpio, setGpio] = React.useState("");
+	const [refresh, setRefresh] = React.useState(0);
 
 	const handleChange = function (e) {
-		setPin(e.target.value);
+		setGpio(e.target.value);
 	}
+
+	const handleRefresh = function () {
+		setRefresh(function (refresh) {
+			return refresh + 1;
+		});
+	}
+
+	const api = function () {
+		return window.localStorage.getItem("nerves_api");
+	}
+
+	const state = useFetch(`http://${api()}/dht/${gpio}`, refresh);
 
 	return (
 		<>
 			<Grid item xs={12} md={6} lg={3}>
 				<Paper className={fixedHeightPaper}>
 					<FormControl className={classes.formControl}>
-						<InputLabel>Pino</InputLabel>
-						<Select
-							value={pin}
-							onChange={handleChange}
-						>
-							<MenuItem value={2}>2</MenuItem>
-							<MenuItem value={3}>3</MenuItem>
-							<MenuItem value={4}>4</MenuItem>
-						</Select>
+						<InputLabel>DHT gpio</InputLabel>
+						<GpioSelect changeHandler={handleChange} />
 					</FormControl>
 					<Paper variant="outlined" className={classes.displayPaper}>
-						Temperatura: 25.3 C
+						Temperatura: {state.data.temperature} C
+						<br />
+						Humidade: {state.data.humidity}
 					</Paper>
-					<Button variant="contained" color="primary">
+					<Button
+						variant="contained"
+						color="primary"
+						onClick={handleRefresh}
+					>
 						Refresh
 					</Button>
 				</Paper>
