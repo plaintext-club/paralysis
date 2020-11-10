@@ -6,35 +6,51 @@ import {
 	Paper,
 	FormControl,
 	InputLabel,
-	Select,
-	MenuItem,
 	Button
 } from "@material-ui/core";
 
-import useStyles from "./UseStyles";
 import GpioSelect from "./GpioSelect";
+import useStyles from "./UseStyles";
+import useFetch from "./hooks/useFetch";
 
 function CardInput() {
 	const classes = useStyles();
 	const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-	const [pin, setPin] = React.useState("");
+	const [gpio, setGpio] = React.useState("");
+	const [refresh, setRefresh] = React.useState(0);
 
 	const handleChange = function (e) {
-		setPin(e.target.value);
+		setGpio(e.target.value);
 	}
+
+	const handleRefresh = function () {
+		setRefresh(function (refresh) {
+			return refresh + 1;
+		});
+	}
+
+	const api = function () {
+		return window.localStorage.getItem("nerves_api");
+	}
+
+	const state = useFetch(`http://${api()}/gpio/read/${gpio}`, refresh);
 
 	return (
 		<>
 			<Grid item xs={12} md={6} lg={3}>
 				<Paper className={fixedHeightPaper}>
 					<FormControl className={classes.formControl}>
-						<InputLabel>Input pin</InputLabel>
+						<InputLabel>Input gpio</InputLabel>
 						<GpioSelect changeHandler={handleChange} />
 					</FormControl>
 					<Paper variant="outlined" className={classes.displayPaper}>
-						Status: 0
+						Status: {state.data.value}
 					</Paper>
-					<Button variant="contained" color="primary">
+					<Button
+						variant="contained"
+						color="primary"
+						onClick={handleRefresh}
+					>
 						Refresh
 					</Button>
 				</Paper>

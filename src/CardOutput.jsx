@@ -6,8 +6,6 @@ import {
 	Paper,
 	FormControl,
 	InputLabel,
-	Select,
-	MenuItem,
 	Button
 } from "@material-ui/core";
 
